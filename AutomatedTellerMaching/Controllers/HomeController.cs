@@ -1,6 +1,8 @@
 ﻿using AutomatedTellerMaching.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace AutomatedTellerMaching.Controllers
@@ -12,9 +14,12 @@ namespace AutomatedTellerMaching.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var user = User.Identity.GetUserId();
-            var checkingAccountId = db.CheckingAccounts.Where(c => c.ApplicationUserId == user).First().Id;
+            var userId = User.Identity.GetUserId();
+            var checkingAccountId = db.CheckingAccounts.Where(c => c.ApplicationUserId == userId).First().Id;
             ViewBag.CheckingAccountId = checkingAccountId;
+
+            var manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = manager.FindById(userId);
             return View();
         }
 
