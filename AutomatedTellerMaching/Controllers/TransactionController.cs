@@ -1,4 +1,5 @@
 ﻿using AutomatedTellerMaching.Models;
+using AutomatedTellerMaching.Services;
 using System.Web.Mvc;
 
 namespace AutomatedTellerMaching.Controllers
@@ -6,7 +7,19 @@ namespace AutomatedTellerMaching.Controllers
     [Authorize]
     public class TransactionController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        // private ApplicationDbContext db = new ApplicationDbContext();
+
+        private IApplicationDbContext db;
+
+        public TransactionController()
+        {
+            db = new ApplicationDbContext();
+        }
+
+        public TransactionController(IApplicationDbContext dbContext)
+        {
+            db = dbContext;
+        }
 
         // GET: Transaction/Deposit
         public ActionResult Deposit(int CheckingAccountId)
@@ -21,6 +34,8 @@ namespace AutomatedTellerMaching.Controllers
             {
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
+                var service = new CheckingAccountService(db);
+                service.UpdateBalance(transaction.CheckingAccountId);
                 return RedirectToAction("Index", "Home");
             }
             return View();

@@ -8,7 +8,7 @@ namespace AutomatedTellerMaching.Models
 
         [Required]
         [DataType(DataType.Currency)]
-        public decimal Amount { get; set; }
+        public int Amount { get; set; }
 
         public virtual CheckingAccount CheckingAccount { get; set; }
 
