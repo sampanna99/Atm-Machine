@@ -37,13 +37,14 @@ namespace AutomatedTellerMaching.Controllers
             return View();
         }
 
+
         [HttpPost]
         public ActionResult Contact(string message)
         {
             //TODO : send message to HQ
             ViewBag.TheMessage = "We got your message!";
 
-            return View();
+            return PartialView("_ContactThanks");
         }
 
         public ActionResult Foo()

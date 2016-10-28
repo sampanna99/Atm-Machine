@@ -34,11 +34,11 @@ namespace AutomatedTellerMaching.Tests
             var fakeDb = new FakeApplicationDbContext();
             fakeDb.CheckingAccounts = new FakeDbSet<CheckingAccount>();
 
-            var checkingAccount = new CheckingAccount { Id = 1, AccountNumber = "000000TEST", Balance = 0 };
+            var checkingAccount = new CheckingAccount { Id = 10, AccountNumber = "000000TEST", Balance = 0 };
 
             fakeDb.Transactions = new FakeDbSet<Transaction>();
             var transactionsController = new TransactionController(fakeDb);
-            transactionsController.Deposit(new Transaction { CheckingAccountId = 1, Amount = 25 });
+            transactionsController.Deposit(new Transaction { CheckingAccountId = 10, Amount = 25 });
 
             // checkingAccount.Balance = 25;
 

@@ -2,7 +2,7 @@
     ViewBag.Title = "Contact";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.TheMessage</h3>
+
 
 <address>
     One Microsoft Way<br />
@@ -15,7 +15,53 @@
     <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
 </address>
-<form method="post">
+@*<form method="post">
     <textarea name="message"></textarea>
-    <input type="submit" value="Send" />
-</form>
+    <input type="submit" value="Send" /> we did below to use ajax call
+</form>*@
+@*<div id="formSection">
+    <h3>@ViewBag.TheMessage</h3>
+@using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "formSection" }))
+{
+    <textarea name="message"></textarea>
+        <input type="submit" value="Send" />
+}
+</div>*@
+
+<div id="formSection">
+    <h3>@ViewBag.TheMessage</h3>
+    <form method="post" id="contactForm">
+        <textarea name="message" id="message" maxlength="150" data-bind="value:message,valueUpdate:'input'" ></textarea>
+            <input type="submit" value="Send" />
+        <span data-bind="text:charactersRemaining"></span> characters remaining
+    </form>
+    <img src="~/Content/Images/om mani padme.png" id="progress" style="display:none" />
+</div>
+
+@section scripts
+{
+<script src="~/Scripts/knockout-3.4.0.js"></script>
+
+    <script>
+        function ContactViewModel() {
+            var self = this;
+            self.message = ko.observable('');
+            self.charactersRemaining = ko.computed(function () {
+                return 150 - self.message().length;
+
+            })
+        }
+        ko.applyBindings(new ContactViewModel());
+
+    </script>
+
+    <script>
+        $('#contactForm').submit(function () {
+            $('#progress').show();
+            $.post('', { message: $('#message').val() }).done(function (response) {
+                setTimeout(function () { $('#formSection').html(response); }, 2000);
+            });
+            return false;
+        });
+    </script>
+}
