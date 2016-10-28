@@ -34,6 +34,22 @@ namespace AutomatedTellerMaching.Migrations
 
 
             }
+
+            context.Transactions.Add(new Transaction { Amount = -300, CheckingAccountId = 5 });
+            context.Transactions.Add(new Transaction { Amount = 500, CheckingAccountId = 5 });
+            context.Transactions.Add(new Transaction { Amount = 255, CheckingAccountId = 5 });
+            context.Transactions.Add(new Transaction { Amount = 800, CheckingAccountId = 5 });
+            context.Transactions.Add(new Transaction { Amount = 450, CheckingAccountId = 5 });
+            context.Transactions.Add(new Transaction { Amount = 900, CheckingAccountId = 5 });
+            context.Transactions.Add(new Transaction { Amount = 19875, CheckingAccountId = 5 });
+            context.Transactions.Add(new Transaction { Amount = -30009, CheckingAccountId = 5 });
+            context.Transactions.Add(new Transaction { Amount = 87645, CheckingAccountId = 5 });
+            context.Transactions.Add(new Transaction { Amount = 900, CheckingAccountId = 5 });
+            context.Transactions.Add(new Transaction { Amount = 1234, CheckingAccountId = 5 });
+            context.Transactions.Add(new Transaction { Amount = -742, CheckingAccountId = 5 });
+            context.Transactions.Add(new Transaction { Amount = 2922, CheckingAccountId = 5 });
+            context.Transactions.Add(new Transaction { Amount = 1209, CheckingAccountId = 5 });
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

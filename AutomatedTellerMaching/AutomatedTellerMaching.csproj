@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201610280507225_Idontknow.Designer.cs">
       <DependentUpon>201610280507225_Idontknow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610282312554_checking.cs" />
+    <Compile Include="Migrations\201610282312554_checking.Designer.cs">
+      <DependentUpon>201610282312554_checking.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -268,6 +272,7 @@
     <Content Include="Views\Transaction\Deposit.cshtml" />
     <Content Include="Views\CheckingAccount\List.cshtml" />
     <Content Include="Views\Home\_ContactThanks.cshtml" />
+    <Content Include="Views\CheckingAccount\Statement.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -359,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610280507225_Idontknow.resx">
       <DependentUpon>201610280507225_Idontknow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610282312554_checking.resx">
+      <DependentUpon>201610282312554_checking.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
